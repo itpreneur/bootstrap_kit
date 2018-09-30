@@ -1,5 +1,5 @@
 import "./bootstrap"; //bootstrapjs
-import "./app.scss";
+import "./scss/app.scss";
 // if (module.hot) {
 //   module.hot.accept();
 // }

@@ -48,6 +48,13 @@ module.exports = {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           {
+            loader: "url-loader",
+            options: {
+              limit: 8 * 1024, // Convert images < 8kb to base64 strings
+              name: "images/[hash]-[name].[ext]"
+            }
+          },
+          {
             loader: "file-loader"
           },
           //image compression
@@ -65,7 +72,15 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ["file-loader"]
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "fonts/"
+            }
+          }
+        ]
       }
     ]
   }
